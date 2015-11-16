@@ -1,6 +1,17 @@
 # afremize
 
-***********  SYSTEM REQUIREMENTS  ************
+## ABOUT
+
+'Afremize' is an implementation of the algorithm I proposed in my Computer Science bachelor thesis with the title
+
+### 'Maschinelles Generieren von impressionistischen Bildern im Stil von Leonid Afremov'
+### ('Machine-Generating of impressionist, Leonid Afremov-style paintings').
+ 
+The thesis was inspired by the beautiful work of the impressionist painter Leonid Afremov. Check out his website:               
+    <www.afremov.com>
+
+
+##  SYSTEM REQUIREMENTS
 
 This Afremize implementation has been tested on Linux, using the Python distribution 'Anaconda':
 
@@ -8,7 +19,7 @@ Python 2.7.9 :: Anaconda 2.2.0 (64-bit)
 
 Download link:
 
-http://continuum.io/downloads
+<http://continuum.io/downloads>
  - please choose the "Linux 64-Bit — Python 2.7" version
 
 Anaconda can be installed and used in parallel with other Python distributions.
@@ -18,7 +29,7 @@ Your system should have at least 1.5 GB RAM available in order to convert a 2700
 
 
 
-*******************  USAGE  *******************
+##  USAGE
 
 To start the program, open a Terminal window, navigate to the directory with the python source files and type in:
 
@@ -48,14 +59,14 @@ In a similar manner, you can alter the brush stroke density, or the ratio betwee
 
 
 
-**************  RUNTIME  ***************
+##  RUNTIME
 
 On an i5 computer with 8 GB RAM, a 2700x1500 input picture needs about 2-4 minutes to convert.
 
 This depends on the level of detail in the input picture and on the configuration options you use.
 
 
-***************  CONTACT  ****************
+##  CONTACT
 
 If you have questions about afremize, direct them at
 
