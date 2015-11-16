@@ -1,4 +1,4 @@
-# afremize
+# Afremize
 
 ## ABOUT
 
@@ -68,7 +68,7 @@ This depends on the level of detail in the input picture and on the configuratio
 
 ##  CONTACT
 
-If you have questions about afremize, direct them at
+If you have questions about Afremize, direct them at
 
     afremize@gmail.com
 
