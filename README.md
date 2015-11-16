@@ -4,8 +4,8 @@
 
 'Afremize' is an implementation of the algorithm I proposed in my Computer Science bachelor thesis with the title
 
-### 'Maschinelles Generieren von impressionistischen Bildern im Stil von Leonid Afremov'
-### ('Machine-Generating of impressionist, Leonid Afremov-style paintings').
+#### 'Maschinelles Generieren von impressionistischen Bildern im Stil von Leonid Afremov'
+#### ('Machine-Generating of impressionist, Leonid Afremov-style paintings').
  
 The thesis was inspired by the beautiful work of the impressionist painter Leonid Afremov. Check out his website:               
     <www.afremov.com>
