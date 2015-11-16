@@ -8,7 +8,7 @@
 #### ('Machine-Generating of impressionist, Leonid Afremov-style paintings').
  
 The thesis was inspired by the beautiful work of the impressionist painter Leonid Afremov. Check out his website:               
-    <www.afremov.com>
+<http:www.afremov.com>
 
 
 ##  SYSTEM REQUIREMENTS
