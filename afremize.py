@@ -228,7 +228,6 @@ def setParameters(width, height, verbose, randSizes=100, longStrokes=False, stro
     # stroke width and height:
     if width > height:
         factor = 0.85
-        factor = 1.0
     else:
         factor = 1.0
     if strokeWidth == None:
