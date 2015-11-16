@@ -34,7 +34,7 @@ if __name__ == "__main__":
                       help="Print status messages and parameter values to stdout. [default: %default]")
     
     parser.add_option("-b", "--background",
-                      dest="background", default='cluster',
+                      dest="background", default='blur',
                       help="Choose which kind of background should be used for the output image: the blurred input image, colored Felzenszwalb clusters, or no background at all. background: blur, cluster, none [default: %default]")
     parser.add_option("-S", "--saturation",
                       dest="saturation", default=2.5,
@@ -123,6 +123,7 @@ if __name__ == "__main__":
         #infile = "pics/autumn/autumn.jpg"
         #infile = "pics/autumn/fog/autumn.jpg"
         #infile = "pics/Denisa/Deniska.jpg"
+        #infile = "pics/fog/fog.jpg"
         #infile = "pics/Garten/Garten.bmp" #segmentID 12
         #infile = "pics/Garten_600x333.png"
         #infile = "pics/Halbauer_Weg/Halbauer_Weg.jpg"
@@ -133,6 +134,7 @@ if __name__ == "__main__":
         #infile = "pics/Lenocka/Lenocka_retouched_small.png"
         #infile = "pics/lines.bmp"
         #infile = "pics/lines2.bmp"
+        #infile = "pics/natures_necklace.jpg"
         #infile = "pics/Nico/Nico.jpg"
         #infile = "pics/Nico/Nico_2520x1800.jpg"
         #infile = "pics/Nico/Nico_600x429.jpg"
@@ -186,6 +188,7 @@ if __name__ == "__main__":
             print("\nconverting file: "+ str(infile))
             afremize.convertImage(
                 infile,
+                inIm=None,
                 path=path,
                 input_dir=input_dir,
                 output_dir=output_dir,

@@ -226,8 +226,13 @@ def differenceToNeighbors(segmentID, segmentsByIDlistNP, inPix, minX, minY, maxX
 
 def setParameters(width, height, verbose, randSizes=100, longStrokes=False, strokeWidth=None, strokeHeight=None, strokeDensity=None):
     # stroke width and height:
+    if width > height:
+        factor = 0.85
+        factor = 1.0
+    else:
+        factor = 1.0
     if strokeWidth == None:
-        complex_sizeX = int((width + height) * (0.01 * (2.66667 - 0.000166667 * (width + height))))
+        complex_sizeX = int((width + height) * (0.01 * (2.66667 - 0.000166667 * (width + height))) * factor)
     else:
         complex_sizeX = strokeWidth
     
@@ -250,9 +255,11 @@ def setParameters(width, height, verbose, randSizes=100, longStrokes=False, stro
         stroke_density = max(1, strokeHeight // 3)
     else:
         stroke_density = max(1, int((width + height) * 0.01 * (1.66667 - 0.000166667 * (width + height))))
+    if width > height:
+        stroke_density = int(max(1, stroke_density * factor))
     
     if longStrokes:
-        stroke_density = max(1, int(stroke_density * 0.85 ))
+        stroke_density = max(1, int(stroke_density * factor ))
     
     if verbose:
         if randSizes < 100:
@@ -303,7 +310,7 @@ def sampleStartEndColors(inPix, X, Y, width, height, complex_sizeXrand, complex_
 # segmentsByIDlist: a list where the index is the segmentID and the element behind this index is a list of all tuples (x,y) where x,y are coordinates of a pixel belonging to this regionID
 # fill the output image with brush strokes and save it
 # segmentParams as a list of elements of the form [segmentID, regLine, angle, bbox, degree]
-def paintImg_with_brushstrokes(outfile, outIm, outPix, width, height, segmentParams, segmentsByIDlist, inPix, verbose, randSizes=100, longStrokes=False, directedRotate=False, strokeWidth=None, strokeHeight=None, strokeDensity=None, noHairlines=False, noMargins=False, segBound=None, colDiff=500, ground=False, highlight=False, colorify=0, otherfiles=False, felzScale=None, felzSigma=None, felzMinsize=None):
+def paintImg_with_brushstrokes(outfile, outIm, outPix, width, height, segmentParams, segmentsByIDlist, inPix, verbose, randSizes=100, longStrokes=False, directedRotate=False, strokeWidth=None, strokeHeight=None, strokeDensity=None, noHairlines=False, noMargins=False, segBound=None, colDiff=500, ground=False, highlight=False, colorify=0, otherfiles=False, felzScale=None, felzSigma=None, felzMinsize=None, webinterface=False):
     
     # set variables according to parameters passed down from main:
     complex_sizeX, complex_sizeY, stroke_density = setParameters(width, height, verbose, randSizes, longStrokes, strokeWidth, strokeHeight, strokeDensity)
@@ -394,8 +401,9 @@ def paintImg_with_brushstrokes(outfile, outIm, outPix, width, height, segmentPar
             color = inPix[segmentsByIDlist[segmentID][0][0], segmentsByIDlist[segmentID][0][1]]
             for p in range(0, len(segmentsByIDlist[segmentID])):
                 outPix[segmentsByIDlist[segmentID][p][0], segmentsByIDlist[segmentID][p][1]] = color
-            
-    imgIO.savePixelAccessImg(outfile, outIm) # png
+    
+    if not webinterface:
+        imgIO.savePixelAccessImg(outfile, outIm) # png
 
 
 # data structures:
@@ -416,7 +424,7 @@ def sortSegmentsBySize(segmentsByIDlist):
     return segmentsByIDlist_sorted
 
 
-def saturateImage(inIm, filename, saturation=3.0, otherfiles=False):
+def saturateImage(inIm, filename, saturation=2.5, otherfiles=False):
     converter = ImageEnhance.Color(inIm)
     saturatedIm = converter.enhance(saturation)
     saturatedPix = saturatedIm.load()
@@ -426,10 +434,13 @@ def saturateImage(inIm, filename, saturation=3.0, otherfiles=False):
 
 
 # calling this function will start the 'afremize' process. The only obligatory argument is the input file name, 'infile'
-def convertImage(infile, path="", input_dir="", output_dir="", verbose=False, strokeWidth=None, strokeHeight=None, randSizes=100, longStrokes=False, directedRotate=False, strokeDensity=None, background='blur', noHairlines=False, noMargins=False, segBound=None, colDiff=500, ground=False, saturation=None, highlight=False, colorify=0, otherfiles=False, felzScale=None, felzSigma=None, felzMinsize=None):
+def convertImage(infile, inIm=None, path="", input_dir="", output_dir="", verbose=False, strokeWidth=100, strokeHeight=100, randSizes=100, longStrokes=False, directedRotate=False, strokeDensity=70, background='blur', noHairlines=False, noMargins=False, segBound=100, colDiff=500, ground=False, saturation=2.5, highlight=False, colorify=0, otherfiles=False, felzScale=50, felzSigma=4.5, felzMinsize=10, webinterface=False):
     
     warnings.simplefilter('ignore', np.RankWarning) # ignore warnings when the polyfit function doesn't get enough data
-    inIm, inPix = imgIO.loadImgAsPixelAccess(path + input_dir + infile)
+    if inIm == None:
+        inIm, inPix = imgIO.loadImgAsPixelAccess(path + input_dir + infile)
+    else:
+        inPix = inIm.load()
     width, height = inIm.size
     
     drawRegressionLines = otherfiles
@@ -459,4 +470,6 @@ def convertImage(infile, path="", input_dir="", output_dir="", verbose=False, st
     outIm, outPix = colorBackground(inIm, inPix, segmentsByIDlist, outIm, outPix, background)
     
     
-    paintImg_with_brushstrokes(outfile, outIm, outPix, width, height, segmentParams, segmentsByIDlist, inPix, verbose, randSizes=randSizes, longStrokes=longStrokes, directedRotate=directedRotate, strokeWidth=strokeWidth, strokeHeight=strokeHeight, strokeDensity=strokeDensity, noHairlines=noHairlines, noMargins=noMargins, segBound=segBound, colDiff=colDiff, ground=ground, highlight=highlight, colorify=colorify, otherfiles=otherfiles, felzScale=felzScale, felzSigma=felzSigma, felzMinsize=felzMinsize) # segmentsByIDlist to be replaced by segmentsByIDlist_sorted
+    paintImg_with_brushstrokes(outfile, outIm, outPix, width, height, segmentParams, segmentsByIDlist, inPix, verbose, randSizes=randSizes, longStrokes=longStrokes, directedRotate=directedRotate, strokeWidth=strokeWidth, strokeHeight=strokeHeight, strokeDensity=strokeDensity, noHairlines=noHairlines, noMargins=noMargins, segBound=segBound, colDiff=colDiff, ground=ground, highlight=highlight, colorify=colorify, otherfiles=otherfiles, felzScale=felzScale, felzSigma=felzSigma, felzMinsize=felzMinsize, webinterface=webinterface) # segmentsByIDlist to be replaced by segmentsByIDlist_sorted
+    
+    return outIm
