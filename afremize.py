@@ -403,6 +403,7 @@ def paintImg_with_brushstrokes(outfile, outIm, outPix, width, height, segmentPar
     
     if not webinterface:
         imgIO.savePixelAccessImg(outfile, outIm) # png
+    return outIm
 
 
 # data structures:
@@ -442,6 +443,9 @@ def convertImage(infile, inIm=None, path="", input_dir="", output_dir="", verbos
         inPix = inIm.load()
     width, height = inIm.size
     
+    if inIm.mode != 'RGB':
+        inIm = inIm.convert('RGB')
+    
     drawRegressionLines = otherfiles
     if drawRegressionLines:
         inImCopy = inIm.copy()
@@ -469,6 +473,6 @@ def convertImage(infile, inIm=None, path="", input_dir="", output_dir="", verbos
     outIm, outPix = colorBackground(inIm, inPix, segmentsByIDlist, outIm, outPix, background)
     
     
-    paintImg_with_brushstrokes(outfile, outIm, outPix, width, height, segmentParams, segmentsByIDlist, inPix, verbose, randSizes=randSizes, longStrokes=longStrokes, directedRotate=directedRotate, strokeWidth=strokeWidth, strokeHeight=strokeHeight, strokeDensity=strokeDensity, noHairlines=noHairlines, noMargins=noMargins, segBound=segBound, colDiff=colDiff, ground=ground, highlight=highlight, colorify=colorify, otherfiles=otherfiles, felzScale=felzScale, felzSigma=felzSigma, felzMinsize=felzMinsize, webinterface=webinterface) # segmentsByIDlist to be replaced by segmentsByIDlist_sorted
+    outIm = paintImg_with_brushstrokes(outfile, outIm, outPix, width, height, segmentParams, segmentsByIDlist, inPix, verbose, randSizes=randSizes, longStrokes=longStrokes, directedRotate=directedRotate, strokeWidth=strokeWidth, strokeHeight=strokeHeight, strokeDensity=strokeDensity, noHairlines=noHairlines, noMargins=noMargins, segBound=segBound, colDiff=colDiff, ground=ground, highlight=highlight, colorify=colorify, otherfiles=otherfiles, felzScale=felzScale, felzSigma=felzSigma, felzMinsize=felzMinsize, webinterface=webinterface) # segmentsByIDlist to be replaced by segmentsByIDlist_sorted
     
     return outIm
