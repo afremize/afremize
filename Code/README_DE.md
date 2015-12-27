@@ -2,12 +2,13 @@
 
 ## UEBER AFREMIZE
 
-'Afremize' is an implementation of the algorithm I proposed in my Computer Science bachelor thesis with the title
+'Afremize' ist die Implementierung des Algorithmus, den ich in meiner Informatik-Bachelorarbeit mit dem Titel
 
 #### 'Maschinelles Generieren von impressionistischen Bildern im Stil von Leonid Afremov'
-#### ('Machine-Generating of impressionist, Leonid Afremov-style paintings').
- 
-The thesis was inspired by the beautiful work of the impressionist painter Leonid Afremov. Check out his website:               
+
+vorgestellt habe.
+
+Die Arbeit wurde durch die wunderschoenen Werke des impressionistischen Malers Leonid Afremov inspiriert. Siehe die Bildergallerie auf seiner Webseite:
 <http:www.afremov.com>
 
 
@@ -57,7 +58,7 @@ Oder schalten Sie zusaetzlich randomisierte Pinselstrichgroesse ein, mit Werten 
 
 Aehnlich kann man mit anderen Parametern die Dichte der Pinselstriche, oder das Verhaeltnis zwischen der Anzahl der simplen und der komplexen Pinselstriche anpassen, sowie die Farbsaettigung, oder das Hintergrundbild, und vieles mehr.
 
-Um *grosse Bildermengen* mit einem Befehl zu konvertieren, erzeugen Sie ein Unterverzeichnis namens <'input_images'> in dem Verzeichnis, wo Sie die Python-Quelldateien gespeichert haben, kopieren Sie die zu konvertierenden Bilder dort hin, und fuehren dann einfach aus
+Um *grosse Bildermengen* mit einem Befehl zu konvertieren, erzeugen Sie ein Unterverzeichnis namens 'input_images' in dem Verzeichnis, wo Sie die Python-Quelldateien gespeichert haben, kopieren Sie die zu konvertierenden Bilder dort hin, und fuehren dann einfach aus
 
     python main.py
 
@@ -68,7 +69,7 @@ Auf einem i5-Computer mit 8 GB RAM dauert die Bearbeitung eines 2700x1500-Bildes
 
 Diese Zeit haengt vom Detailgrad des Bildes und von den gewaehlten Parametern ab.
 
-Wie Sie in der Bachelorarbeit unter *Thesis* nachlesen koennen, liegt die asymptotische Laufzeit in <O(n*log(n))>, wobei <n> die Anzahl der Pixel des Eingabebildes ist.
+Wie Sie in der Bachelorarbeit unter *Thesis* nachlesen koennen, liegt die asymptotische Laufzeit in O(n*log(n)), wobei n die Anzahl der Pixel des Eingabebildes ist.
 
 
 ##  KONTAKT

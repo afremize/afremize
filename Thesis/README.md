@@ -2,7 +2,7 @@
 
 ## ABOUT
 
-Here you can download my bachelor thesis
+Here, you can download my bachelor thesis
 
 #### 'Maschinelles Generieren von impressionistischen Bildern im Stil von Leonid Afremov'
 #### ('Machine-Generating of impressionist, Leonid Afremov-style paintings').

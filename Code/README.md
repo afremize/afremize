@@ -45,21 +45,21 @@ For a list of all supported configuration options, type into Terminal:
     
     python main.py --help
 
-In case the default parameters do not produce pleasing results, turn on detailed information printing with the <--verbose> flag, as well as creating of help files which will help you understand how exactly the conversion process did its job and maybe how it can be improved:
+In case the default parameters do not produce pleasing results, turn on detailed information printing with the --verbose flag, as well as creating of help files which will help you understand how exactly the conversion process did its job and maybe how it can be improved:
     
     python main.py -f "path/to/input_picture.png" --verbose --otherfiles
 
-In case there are, for example, overall to few details visible in the output picture, try making the brush strokes smaller. In case the <--verbose> flag showed during the previous conversion that the <strokeWidth> parameter had a value of 80, try making it 50 (using the same input picture) and see what happens:
+In case there are, for example, overall too few details visible in the output picture, try making the brush strokes smaller. In case the --verbose flag showed during the previous conversion that the strokeWidth parameter had a value of 80, try making it 50 (using the same input picture) and see what happens:
     
     python main.py -f "path/to/input_picture.png" --verbose --otherfiles --width=50
 
-Or try to turn on stroke size randomization, with stroke size values between 40% and 100% of their maximum size (<strokeWidth>):
+Or try to turn on stroke size randomization, with stroke size values between 40% and 100% of their maximum size (strokeWidth):
     
     python main.py -f "path/to/input_picture.png" --verbose --otherfiles --width=50 --randSizes=40
 
 In a similar manner, you can alter the brush stroke density, or the ratio between simple (single-colored) and complex (multi-colored) brush strokes, as well as saturation, or the background picture used, and much more.
 
-To convert many pictures *in bulk* with one command, create a directory named <'input_images'> as a subdirectory of wherever you put the python source files, and copy the pictures you want to convert in there. Then simply run
+To convert many pictures *in bulk* with one command, create a directory named 'input_images' as a subdirectory of wherever you put the python source files, and copy the pictures you want to convert in there. Then simply run
 
     python main.py
 
@@ -70,7 +70,7 @@ On an i5 processor and with over 1.5 GB RAM available, a 2700x1500 input picture
 
 This depends on the level of detail in the input picture and on the configuration options you use.
 
-As you can read in the thesis, the asymptotic runtime is in <O(n*log(n))>, <n> being the number of pixels in the input image.
+As you can read in the thesis, the asymptotic runtime is in O(n*log(n)), n being the number of pixels in the input image.
 
 
 ##  CONTACT
