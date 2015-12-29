@@ -4,7 +4,7 @@
 
 ![Input image](https://raw.github.com/afremize/afremize/master/Gallery/Haus.jpg)
 
-![Input image](https://raw.github.com/afremize/afremize/master/Gallery/Haus_out.png)
+![Input image](https://raw.github.com/afremize/afremize/master/Gallery/Haus__out.png)
 
 ![Input image](https://raw.github.com/afremize/afremize/master/Gallery/Dorm.jpg)
 
