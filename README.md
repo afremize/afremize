@@ -9,13 +9,15 @@ This is the official page of my Computer Science bachelor thesis with the title
 
 and its python implementation, 'Afremize'.
 
-For a convenient web interface, see
-<www.afremize.com>
+For a convenient **web interface**, see
+
+<http:www.afremize.com>
 
 You will find the thesis text in the 'Thesis' directory and the implementation in the 'Code' directory, including installation instructions.
 
-The thesis was inspired by the beautiful work of the impressionist painter Leonid Afremov. Check out his website:               
-<www.afremov.com>
+The thesis was inspired by the beautiful work of the impressionist painter Leonid Afremov. Check out his website:
+
+<http:www.afremov.com>
 
 
 ##  CONTACT
